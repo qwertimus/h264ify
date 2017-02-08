@@ -33,6 +33,9 @@ if (localStorage['h264ify-enable'] === undefined) {
 if (localStorage['h264ify-block_60fps'] === undefined) {
   localStorage['h264ify-block_60fps'] = false;
 }
+if (localStorage['h264ify-paused'] === undefined) {
+  localStorage['h264ify-paused'] = false;
+}
 
 // Cache chrome.storage.local options in localStorage.
 // This is needed because chrome.storage.local.get() is async and we want to
@@ -41,10 +44,12 @@ if (localStorage['h264ify-block_60fps'] === undefined) {
 chrome.storage.local.get({
   // Set defaults
   enable: true,
-  block_60fps: false
+  block_60fps: false,
+  paused: false
  }, function(options) {
    localStorage['h264ify-enable'] = options.enable;
    localStorage['h264ify-block_60fps'] = options.block_60fps;
+   localStorage['h264ify-paused'] = options.paused;
  }
 );
 
@@ -56,4 +61,3 @@ injectScript.onload = function() {
   this.parentNode.removeChild(this);
 };
 (document.head || document.documentElement).appendChild(injectScript);
-

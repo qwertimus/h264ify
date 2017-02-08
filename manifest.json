@@ -1,6 +1,6 @@
 {
   "name": "h264ify",
-  "version": "1.0.4",
+  "version": "1.0.4.9999",
   "manifest_version": 2,
   "description": "Makes YouTube stream H.264 videos instead of VP8/VP9 videos",
   "homepage_url": "https://github.com/erkserkserks/h264ify",
@@ -8,6 +8,10 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
+  },
+  "background": {
+    "persistent": true,
+    "scripts": [ "src/background.js" ]
   },
   "content_scripts": [
     {
@@ -22,6 +26,14 @@
       "all_frames": true
     }
   ],
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Toggle h264ify"
+  },
   "options_page": "options.html",
   "permissions": [ "storage" ]
 }

@@ -23,7 +23,9 @@
  */
 
 function inject () {
-  if (localStorage['h264ify-enable'] === 'false') {
+  if (localStorage['h264ify-enable'] === false) {
+    return;
+  } else if (localStorage['h264ify-paused'] == true) {
     return;
   }
 
@@ -38,7 +40,7 @@ function inject () {
         if (type.indexOf(disallowed_types[i]) !== -1) return '';
       }
 
-      if (localStorage['h264ify-block_60fps'] === 'true') {
+      if (localStorage['h264ify-block_60fps'] === true) {
         var match = /framerate=(\d+)/.exec(type);
         if (match && match[1] > 30) return '';
       }
@@ -60,4 +62,3 @@ function inject () {
   var origIsTypeSupported = mse.isTypeSupported.bind(mse);
   mse.isTypeSupported = makeModifiedTypeChecker(origIsTypeSupported);
 }
-
