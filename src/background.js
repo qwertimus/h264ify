@@ -18,7 +18,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     paused: localStorage['h264ify-paused']
   });
 
-  var iconPaths = localStorage['h264ify-paused'] === '1' ? {
+  var iconPaths = localStorage['h264ify-paused'] === '0' ? {
     "16": "icons/icon16.png",
     "19": "icons/icon19.png",
     "24": "icons/icon24.png",
