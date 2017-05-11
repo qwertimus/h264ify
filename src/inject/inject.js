@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-function inject () {
+function inject() {
   if (localStorage['h264ify-enable'] === false) {
     return;
   } else if (localStorage['h264ify-paused'] == true) {

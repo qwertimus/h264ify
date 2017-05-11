@@ -42,21 +42,22 @@ if (localStorage['h264ify-paused'] === undefined) {
 // load the injection script immediately.
 // See https://bugs.chromium.org/p/chromium/issues/detail?id=54257
 chrome.storage.local.get({
-  // Set defaults
-  enable: true,
-  block_60fps: false,
-  paused: false
- }, function(options) {
-   localStorage['h264ify-enable'] = options.enable;
-   localStorage['h264ify-block_60fps'] = options.block_60fps;
-   localStorage['h264ify-paused'] = options.paused;
- }
+    // Set defaults
+    enable: true,
+    block_60fps: false,
+    paused: false
+  },
+  function (options) {
+    localStorage['h264ify-enable'] = options.enable;
+    localStorage['h264ify-block_60fps'] = options.block_60fps;
+    localStorage['h264ify-paused'] = options.paused;
+  }
 );
 
 var injectScript = document.createElement('script');
 // Use textContent instead of src to run inject() synchronously
 injectScript.textContent = inject.toString() + "inject();";
-injectScript.onload = function() {
+injectScript.onload = function () {
   // Remove <script> node after injectScript runs.
   this.parentNode.removeChild(this);
 };
